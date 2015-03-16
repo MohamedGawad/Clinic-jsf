@@ -4,106 +4,12 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 
 <h:head>
-
-	<!-- Load stylesheets -->
-	<h:outputStylesheet library="css" name="style.css"></h:outputStylesheet>
-
+    <title>Redirect</title>
+    <f:metadata>
+        <f:view action="/pages/sucess.xhtml" />
+    </f:metadata>
 </h:head>
 <h:body>
 
-
-	<h:form id="submitForm3">
-		<div id="wrapper">
-			<div id="wrappertop"></div>
-
-			<div id="wrappermiddle">
-
-				<h2>Login</h2>
-
-				<div id="username_input">
-
-					<div id="username_inputleft"></div>
-
-					<div id="username_inputmiddle">
-
-						<h:inputText name="username" class="url"
-							value="#{myBean.userName}" />
-						<img id="url_user" src="#{resource['images:mailicon.png']}"
-							alt="..." />
-					</div>
-					<div id="username_inputright"></div>
-				</div>
-				<div id="password_input">
-					<div id="password_inputleft"></div>
-					<div id="password_inputmiddle">
-
-						<h:inputSecret name="pass" class="url"
-							value="#{myBean.passWord}" />
-						<img id="url_password" src="#{resource['images:passicon.png']}"
-							alt="..." />
-
-					</div>
-					<div id="password_inputright"></div>
-				</div>
-
-				<div id="submit">
-
-
-
-					<h:commandLink action="#{myBean.logMeIn}" style="display:block;">
-						<h:graphicImage value="#{resource['images:submit.png']}" />
-					</h:commandLink>
-
-
-
-					<!-- <input type="image" src="./images/submit.png" id="submit2" value="Sign In" onclick="#{loginBean.logMeIn}"/>  -->
-				</div>
-
-
-				<div id="links_left">
-
-					<h:outputLink value="#">Forgot your Password?
-					</h:outputLink>
-
-
-				</div>
-
-				<div id="links_right">
-					<h:outputLink value="#">Not a Member Yet?
-					</h:outputLink>
-				</div>
-
-			</div>
-
-			<div id="wrapperbottom"></div>
-
-			<div id="powered">
-				<p>Powered by MG-Soft</p>
-			</div>
-		</div>
-
-
-	</h:form>
-	<!-- Load Javascipt -->
-	<h:outputScript library="js" name="jquery.js">
-	</h:outputScript>
-	<h:outputScript library="js" name="jquery.query-2.1.7.js">
-	</h:outputScript>
-	<h:outputScript library="js" name="rainbows.js">
-	</h:outputScript>
-	<script type="text/javascript">
-		$(document).ready(function() {
-
-			$("#submit1").hover(function() {
-				$(this).animate({
-					"opacity" : "0"
-				}, "slow");
-			}, function() {
-				$(this).animate({
-					"opacity" : "1"
-				}, "slow");
-			});
-		});
-	</script>
 </h:body>
 </html>

@@ -16,4 +16,14 @@
 		<servlet-name>Faces Servlet</servlet-name>
 		<url-pattern>*.xhtml</url-pattern>
 	</servlet-mapping>
+	<filter>
+        <filter-name>login</filter-name>
+        <filter-class>com.se.filters.LoginFilter</filter-class>
+    </filter>
+    <!-- set the login filter to secure all the pages in the /secured/* path 
+        of the application -->
+    <filter-mapping>
+        <filter-name>login</filter-name>
+        <url-pattern>/pages/success.xhtml</url-pattern>
+    </filter-mapping>
 </web-app>

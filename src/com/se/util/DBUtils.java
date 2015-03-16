@@ -26,7 +26,7 @@ public class DBUtils
 			// prop.getProperty("url")).setProperty("hibernate.connection.username",
 			// prop.getProperty("username")).setProperty("hibernate.connection.password", prop.getProperty("password"));
 			config = new Configuration();
-			config.configure("com/se/util/hibernate1.cfg.xml");
+			config.configure("com/se/util/hibernate.cfg.xml");
 			// StandardServiceRegistryBuilder ssrb = new StandardServiceRegistryBuilder()
 			// .applySettings(config.getProperties());
 			factory = config.buildSessionFactory();

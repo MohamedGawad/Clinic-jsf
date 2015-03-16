@@ -3,24 +3,24 @@ package com.se.beans;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
-import javax.faces.bean.ViewScoped;
+import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.criterion.Restrictions;
-
-import com.se.mapping.TblSeUsers;
+import com.se.mapping.Users;
 import com.se.util.DBUtils;
 
 @ManagedBean(name = "myBean")
-@ViewScoped
+@SessionScoped
 public class LoginBean implements Serializable
 {
 	private Session session;
-	private TblSeUsers user = null;
+	private Users user = null;
 	private String userName;
 	private String passWord;
 	private boolean rememberMe;
@@ -36,10 +36,10 @@ public class LoginBean implements Serializable
 	{
 
 		session = DBUtils.openSession();
-		Criteria cr = session.createCriteria(TblSeUsers.class);
-		cr.add(Restrictions.eq("userName", userName));
+		Criteria cr = session.createCriteria(Users.class);
+		cr.add(Restrictions.eq("username", userName));
 		cr.add(Restrictions.eq("password", passWord));
-		List<TblSeUsers> users = (List<TblSeUsers>) cr.list();
+		List<Users> users = (List<Users>) cr.list();
 		if(!users.isEmpty())
 		{
 			user = users.get(0);
@@ -48,10 +48,16 @@ public class LoginBean implements Serializable
 			loggedIn = true;
 			DBUtils.closeSession(session);
 			userBean.setUser(user);
+			
 			return navBean.redirectToIndex();
 		}
 		else
+		{
+			FacesMessage msg = new FacesMessage("Login error!", "ERROR MSG");
+	        msg.setSeverity(FacesMessage.SEVERITY_ERROR);
+	        FacesContext.getCurrentInstance().addMessage(null, msg);
 			return navBean.redirectToFailed();
+		}
 
 	}
 
@@ -79,12 +85,12 @@ public class LoginBean implements Serializable
 		this.userBean = userBean;
 	}
 
-	public TblSeUsers getUser()
+	public Users getUser()
 	{
 		return user;
 	}
 
-	public void setUser(TblSeUsers user)
+	public void setUser(Users user)
 	{
 		this.user = user;
 	}

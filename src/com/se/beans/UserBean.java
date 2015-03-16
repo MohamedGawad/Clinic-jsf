@@ -6,13 +6,14 @@ import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
-import com.se.mapping.TblSeUsers;
+import com.se.mapping.Users;
+
 
 @ManagedBean(name = "userBean")
 @SessionScoped
 public class UserBean implements Serializable
 {
-	private TblSeUsers user;
+	private Users user;
 
 	public UserBean()
 	{
@@ -23,12 +24,12 @@ public class UserBean implements Serializable
 	{
 	}
 
-	public TblSeUsers getUser()
+	public Users getUser()
 	{
 		return user;
 	}
 
-	public void setUser(TblSeUsers user)
+	public void setUser(Users user)
 	{
 		this.user = user;
 	}
